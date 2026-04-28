@@ -1,14 +1,13 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.Alert;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-public class AlertsTest {
-    public static void main(String[] args) throws Exception {
-        // Create driver instance
-        WebDriver driver = new ChromeDriver();
+public class AlertsTest extends BaseTest {
 
-        // Open alerts page
+    @Test
+    public void testAlertHandling() throws Exception {
+        // Navigate to alerts page
         driver.get("https://the-internet.herokuapp.com/javascript_alerts");
         Thread.sleep(1000);
 
@@ -18,22 +17,14 @@ public class AlertsTest {
 
         // Switch to alert
         Alert alert = driver.switchTo().alert();
-
-        // Get alert text
         String alertText = alert.getText();
 
-        // Accept the alert (click OK)
+        // Accept alert
         alert.accept();
         Thread.sleep(1000);
 
-        // Verify alert was handled
-        if (alertText.contains("I am a JS Alert")) {
-            System.out.println("TEST PASSED");
-        } else {
-            System.out.println("TEST FAILED");
-        }
-
-        // Close browser
-        driver.quit();
+        // Assert alert message
+        Assert.assertTrue(alertText.contains("I am a JS Alert"),
+                "Alert message not found!");
     }
 }
