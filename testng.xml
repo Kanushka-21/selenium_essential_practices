@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium Test Suite">
+    <test name="Automation Tests">
+        <classes>
+            <class name="LoginTest" />
+            <class name="DropdownTest" />
+            <class name="AlertsTest" />
+            <class name="TableTest" />
+            <class name="FileUploadTest" />
+        </classes>
+    </test>
+</suite>
